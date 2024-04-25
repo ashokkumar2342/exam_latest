@@ -1,0 +1,1 @@
+{"result":{"text":"sin squared theta plus cos squared theta equals"},"status":"ok"}

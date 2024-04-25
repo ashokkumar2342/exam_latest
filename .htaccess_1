@@ -1,0 +1,57 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^public
+RewriteRule ^(.*)$ public/$1 [L]
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+</IfModule>
+
+    Options -MultiViews -Indexes
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Redirect Trailing Slashes If Not A Folder...
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+    RewriteRule ^(css|js|images)/(.*)$ public/$1/$2 [L,NC]
+	
+     # Security Headers
+    <IfModule mod_headers.c>
+	#Header set X-Powered-By "Election Dept Haryana"
+	Header unset X-Powered-By
+	    ##Header set Content-Security-Policy "default-src 'self';"
+		Header set Content-Security-Policy "font-src 'self' data: https://code.ionicframework.com; style-src 'self' 'unsafe-inline'"		
+		#Header set Content-Security-Policy "font-src 'self' data:; style-src 'self' 'unsafe-inline'"
+		Header set X-Permitted-Cross-Domain-Policies 'none'
+        Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        Header set X-Xss-Protection "1; mode=block"
+        Header set X-Frame-Options "deny"
+        Header set X-Content-Type-Options "nosniff"
+        Header set Referrer-Policy "strict-origin-when-cross-origin"
+        Header set Permissions-Policy "geolocation=self"
+        Header always set Public-Key-Pins "pin-sha256=\"base64+primary==\"; pin-sha256=\"base64+backup==\"; max-age=5184000; includeSubDomains"
+        Header always set Access-Control-Allow-Headers "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,C$
+        Header always set Access-Control-Allow-Credentials "true" 
+        Header always set Access-Control-Max-Age 1728000
+		
+	
+	Header set Server "Election dept haryana"
+
+    </IfModule>
+   
+</IfModule>

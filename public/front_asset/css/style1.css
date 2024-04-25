@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	margin:0px;
+	padding:0px;
+	/*line-height:22px;*/
+	line-height:20px;
+	font-size:12px;
+	font-family:Tahoma, Geneva, sans-serif;
+	min-width:1024px;
+}
+.header
+{
+	width:98%;
+	margin:auto;
+	min-width:1024px;
+	
+}
+.clr
+{
+	clear:both;
+}
+.lft
+{
+	float:left;
+	
+}
+.rht
+{
+	 [disabled]float:right; 
+}
+
+a img { border:0px }
+
+#Map area {
+outline:none;
+}
+
+ul.menu
+{
+	margin:0px; padding:0px;
+}
+a {text-decoration:none;}
+

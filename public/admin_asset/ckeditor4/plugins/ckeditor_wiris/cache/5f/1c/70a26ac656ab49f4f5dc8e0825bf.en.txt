@@ -1,0 +1,1 @@
+{"result":{"text":"fraction numerator square root of 2 over denominator square root of 2 end fraction plus fraction numerator square root of 2 over denominator square root of 2 end fraction equals 7"},"status":"ok"}
